@@ -115,7 +115,7 @@ jobs:
           
   update-manifests:
     needs: build-and-push
-    uses: ./.github/workflows/update-tag.yml
+    uses: ./.github/workflows/update-tag.yaml
     with:
       version: ${{ needs.build-and-push.outputs.version }}
       repository: ${{ needs.build-and-push.outputs.repository }}
