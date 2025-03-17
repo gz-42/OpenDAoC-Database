@@ -9,6 +9,9 @@ jobs:
   build-and-push:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.set_version.outputs.version }}
+      repository: ${{ steps.repo_name.outputs.lowercase }}
     steps:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
@@ -92,9 +95,6 @@ jobs:
           echo "" >> release_notes.txt
           echo "- \`docker pull ghcr.io/${{ steps.repo_name.outputs.lowercase }}:${{ steps.set_version.outputs.version }}\`" >> release_notes.txt
           echo "- \`docker pull ghcr.io/${{ steps.repo_name.outputs.lowercase }}:latest\`" >> release_notes.txt
-#          echo "" >> release_notes.txt
-#          echo "## 🛠 Changes" >> release_notes.txt
-#          echo "$CHANGES" >> release_notes.txt
         working-directory: ${{ github.workspace }}
 
       - name: 🚀 Publish Release
@@ -113,20 +113,11 @@ jobs:
             host: github.com
             private-key: ${{ secrets.PRIVATE_KEY_GITHUB }}
           
-      - name: Update Manifest
-        run: |
-          rm -Rf *
-          git clone git@github.com:gz-42/devops-opendaoc.git
-          cd devops-opendaoc/manifests/database/
-          sed -i "s+ghcr.io/gz-42/opendaoc-database.*+ghcr.io/gz-42/opendaoc-database:${{ steps.set_version.outputs.version }}+g" db-statefulset.yaml
-          cd ../../charts/aws-eks/opendaoc-database/
-          sed -i "s+tag.*+tag: ${{ steps.set_version.outputs.version }}+g" values.yaml
-    
-      - name: Commit and push changes
-        run: |
-          cd devops-opendaoc
-          git config --global user.name "Keo"
-          git config --global user.email "keo@gz-42.com"
-          git add -A
-          git commit -m "tag image update with ${{ steps.set_version.outputs.version }}"
-          git push origin master
+  update-manifests:
+    needs: build-and-push
+    uses: ./.github/workflows/update-tag.yml
+    with:
+      version: ${{ needs.build-and-push.outputs.version }}
+      repository: ${{ needs.build-and-push.outputs.repository }}
+    secrets:
+      PRIVATE_KEY_GITHUB: ${{ secrets.PRIVATE_KEY_GITHUB }}
