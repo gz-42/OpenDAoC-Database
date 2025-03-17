@@ -17,12 +17,14 @@ jobs:
   sync_latest_from_upstream:
     runs-on: ubuntu-latest
     name: Sync latest commits from upstream repo
+    outputs:
+      has_new_commits: ${{ steps.sync.outputs.has_new_commits }}
 
     steps:
     # REQUIRED step
     # Step 1: run a standard checkout action, provided by github
     - name: Checkout target repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         # optional: set the branch to checkout,
         # sync action checks out your 'target_sync_branch' anyway
@@ -41,25 +43,21 @@ jobs:
         # Set test_mode true during manual dispatch to run tests instead of the true action!!
         test_mode: ${{ inputs.sync_test_mode }}
       
-    # Step 3: Display a sample message based on the sync output var 'has_new_commits'
+ # Step 3: Display a sample message based on the sync output var 'has_new_commits'
     - name: New commits found
       if: steps.sync.outputs.has_new_commits == 'true'
       run: echo "New commits were found to sync."
       
     - name: No new commits
       if: steps.sync.outputs.has_new_commits == 'false'
-      run: echo "There were no new commits."
-      
+      run: echo "There were no new commits. Skipping build and release."
+
     - name: Show value of 'has_new_commits'
       run: echo ${{ steps.sync.outputs.has_new_commits }}
 
-    #If there is no new commit then exit fail the action
-    - name: If no new commits, fail the action
-      if: steps.sync.outputs.has_new_commits == 'false'
-      run: exit 1
-
   build-and-release:
     needs: sync_latest_from_upstream
+    if: needs.sync_latest_from_upstream.outputs.has_new_commits == 'true'
     name: build-and-release
     uses: gz-42/OpenDAoC-Database/.github/workflows/build-and-release.yaml@master
     secrets:
