@@ -411,6 +411,7 @@ REPLACE INTO `classxspecialization` (`ClassXSpecializationID`, `ClassID`, `SpecK
 	(393, 48, 'Blunt', -6, '2000-01-01 00:00:00'),
 	(394, 3, 'CharacterStyleUserCareer', -100, '2000-01-01 00:00:00'),
 	(395, 56, 'Arboreal Path', -3, '2000-01-01 00:00:00'),
+	(396, 20, 'Death Servant', -2, '2000-01-01 00:00:00'),
 	(490, 50, 'Pathfinding', -6, '2000-01-01 00:00:00'),
 	(537, 0, 'Realm Abilities', 1, '2000-01-01 00:00:00');
 /*!40000 ALTER TABLE `classxspecialization` ENABLE KEYS */;
