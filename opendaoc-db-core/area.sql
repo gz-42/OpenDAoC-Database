@@ -1,9 +1,12 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
 CREATE TABLE IF NOT EXISTS `area` (
   `TranslationId` text DEFAULT NULL,
   `Description` text NOT NULL,
@@ -22,7 +25,6 @@ CREATE TABLE IF NOT EXISTS `area` (
   PRIMARY KEY (`Area_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-/*!40000 ALTER TABLE `area` DISABLE KEYS */;
 REPLACE INTO `area` (`TranslationId`, `Description`, `X`, `Y`, `Z`, `Radius`, `Region`, `ClassType`, `CanBroadcast`, `Sound`, `CheckLOS`, `Points`, `LastTimeRowUpdated`, `Area_ID`) VALUES
 	(NULL, 'Ardagh', 351502, 553380, 5103, 1750, 200, 'DOL.GS.Area+Circle', 0, 8, 0, NULL, '2022-05-04 03:33:41', '0293f234-ad7c-4362-907f-9d46305cdb8a'),
 	(NULL, 'Adibard\'s Retreat', 473165, 628021, 2048, 2500, 1, 'DOL.GS.Area+Circle', 0, 6, 0, NULL, '2022-05-04 15:04:47', '0320973a-28f5-4ea6-ba05-b365efd2c886'),
@@ -46,9 +48,7 @@ REPLACE INTO `area` (`TranslationId`, `Description`, `X`, `Y`, `Z`, `Radius`, `R
 	(NULL, 'Cotswold Village', 560368, 511740, 2280, 2500, 1, 'DOL.GS.Area+Circle', 0, 6, 0, NULL, '2022-05-04 04:59:38', '48f137d8-771f-4c98-a3bd-a85505530b35'),
 	(NULL, 'Caer Witrin', 437031, 650943, 2448, 1000, 1, 'DOL.GS.Area+Circle', 0, 0, 0, NULL, '2022-05-04 15:06:30', '540db3b1-c53b-4908-893a-cb06c8744f3a'),
 	(NULL, 'Fort Atla', 749260, 815624, 4408, 4000, 100, 'DOL.GS.Area+Circle', 0, 2, 0, NULL, '2022-05-04 04:40:01', '5783ee28-0d53-4381-a848-5f7178ca3e83'),
-	(NULL, 'Grenlock North East Camp', 260702, 200798, 0, 4000, 27, 'DOL.GS.Keeps.KeepArea', 1, 0, 1, NULL, '2021-11-20 00:08:09', '58903f1c-f30b-4bb7-9070-9ef0127dec01'),
 	(NULL, 'Prydwen Keep', 574139, 530505, 3317, 2000, 1, 'DOL.GS.Area+Circle', 0, 21, 0, NULL, '2022-05-04 13:05:17', '6cdcd5b4-6944-4572-b4bf-7b9753998252'),
-	(NULL, 'Mjollner Faste', 771649, 627090, 0, 5000, 100, 'DOL.GS.Keeps.KeepArea', 1, 0, 1, NULL, '2022-05-02 22:44:02', '6d885d23-a8c8-401e-b88d-561e0548e66e'),
 	(NULL, 'Crair Treflan', 373562, 572957, 8040, 2500, 163, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', '71149ce9-7667-4440-9479-9dc8f8a9959d'),
 	(NULL, 'Ludlow Village', 530970, 479121, 2200, 2000, 1, 'DOL.GS.Area+Circle', 0, 6, 0, NULL, '2022-05-04 13:08:23', '734ed8e4-a363-4da6-bb1a-87c09adfbede'),
 	(NULL, 'Event Safe Zone', 354940, 382292, 5131, 60000, 27, 'DOL.GS.Area+SafeArea', 0, 0, 0, NULL, '2021-11-18 19:25:13', '764502d6-19de-4e93-8a78-703f364b9586'),
@@ -69,7 +69,6 @@ REPLACE INTO `area` (`TranslationId`, `Description`, `X`, `Y`, `Z`, `Radius`, `R
 	(NULL, 'Tir na Nog Bind Area', 29825, 33165, 7916, 15000, 201, 'DOL.GS.Area+BindArea', 1, 0, 0, NULL, '2000-01-01 00:00:00', '9e560b3e-10f0-4d12-afa3-72a8f72bc459'),
 	(NULL, 'Campacorentin Station', 493703, 592523, 1808, 1750, 1, 'DOL.GS.Area+Circle', 0, 21, 0, NULL, '2022-05-04 14:55:14', 'a073badb-af78-4026-aea8-1ad477ce5d9d'),
 	(NULL, 'Seithkona Circle', 742648, 911351, 5979, 2500, 100, 'DOL.GS.Area+Circle', 0, 0, 0, NULL, '2022-05-13 23:40:23', 'a6f7cd28-76b8-498a-ad65-40314da58f63'),
-	(NULL, 'Thidranki Faste', 32249, 38272, 0, 2000, 252, 'DOL.GS.Keeps.KeepArea', 1, 0, 1, NULL, '2021-10-18 13:50:20', 'a88dd78c-4f84-40ed-9a39-a96ba66e2e8f'),
 	(NULL, 'Howth', 341876, 591998, 5861, 2000, 200, 'DOL.GS.Area+Circle', 0, 10, 0, NULL, '2022-05-04 03:35:22', 'a89bab9f-02b3-47f8-a120-772764e3c2a9'),
 	(NULL, 'Humberton Village', 508440, 477188, 2372, 2000, 1, 'DOL.GS.Area+Circle', 0, 12, 0, NULL, '2022-05-04 13:15:05', 'a9728bf6-e7c0-4e2e-a4c4-33bf7260c552'),
 	(NULL, 'Aalid Feie', 310486, 351988, 6062, 6000, 181, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'aalid_feie'),
@@ -85,7 +84,6 @@ REPLACE INTO `area` (`TranslationId`, `Description`, `X`, `Y`, `Z`, `Radius`, `R
 	(NULL, 'thehiddenlair', 31840, 37818, 21396, 5830, 326, 'DOL.GS.Area+Circle', 0, 0, 0, '', '2000-01-01 00:00:00', 'c4e4e337-f8f1-421f-8198-2d7802c258d9'),
 	(NULL, 'Caer Diogel', 402771, 502879, 4680, 4000, 51, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'caer_diogel'),
 	(NULL, 'Caer Gothwaite', 534958, 548813, 4755, 4000, 51, 'DOL.GS.Area+Circle', 1, 6, 0, NULL, '2000-01-01 00:00:00', 'caer_gothwaite'),
-	(NULL, 'Grenlock North Camp', 220105, 199301, 0, 3000, 27, 'DOL.GS.Keeps.KeepArea', 1, 0, 1, NULL, '2021-11-20 00:37:14', 'd1764c6c-3e80-4477-b061-1711ef7a2c9b'),
 	(NULL, 'Alainn Bin', 404610, 765704, 4944, 1750, 200, 'DOL.GS.Area+Circle', 0, 10, 0, NULL, '2022-05-04 03:47:00', 'd54f21ef-42b2-47ce-8adf-74b3ec05eaff'),
 	(NULL, 'West Downs', 577635, 556980, 2191, 1500, 1, 'DOL.GS.Area+Circle', 0, 7, 0, NULL, '2022-05-04 14:31:51', 'df01dfc3-5e52-425c-acf0-2f3a583114f8'),
 	(NULL, 'Droighaid', 379827, 420963, 5528, 5000, 181, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'droighaid'),
@@ -101,5 +99,9 @@ REPLACE INTO `area` (`TranslationId`, `Description`, `X`, `Y`, `Z`, `Radius`, `R
 	(NULL, 'Knarr', 302561, 433648, 3212, 3500, 151, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'knarr'),
 	(NULL, 'Necht', 429890, 317886, 1832, 4000, 181, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'necht'),
 	(NULL, 'Wearyall Village', 435799, 493970, 3088, 4000, 51, 'DOL.GS.Area+Circle', 1, 0, 0, NULL, '2000-01-01 00:00:00', 'wearyall_village');
-/*!40000 ALTER TABLE `area` ENABLE KEYS */;
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
