@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `gravestone` (
   PRIMARY KEY (`Gravestone_ID`),
   KEY `I_Gravestone_OwnerId` (`OwnerId`),
   KEY `I_Gravestone_Region` (`Region`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
